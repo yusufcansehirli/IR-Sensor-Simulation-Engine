@@ -1,0 +1,245 @@
+# material_database.yaml
+# IR Sensor Simulation Engine — Materyal & Emisivite Veritabanı
+# Mimari belge §3.2 temel alınarak genişletilmiştir.
+# ECOSTRESS / JHU Spectral Library referans değerleri kullanılmıştır.
+#
+# Her materyal için:
+#   swir_epsilon: SWIR bant emisivitesi (0.9–2.5 μm ortalaması)
+#   mwir_epsilon: MWIR bant emisivitesi (3.0–5.0 μm ortalaması)
+#   lwir_epsilon: LWIR bant emisivitesi (8.0–12.0 μm ortalaması)
+#   thermal_mass: Isıl kütle [J/(m³·K)]
+#   solar_absorptivity: Güneş soğurma katsayısı (güneş altı ısınma)
+#   temperature_offset_K: Ortam sıcaklığına ek sıcaklık [K] (motor vb.)
+# ─────────────────────────────────────────────────────────────────────────────
+
+materials:
+
+  # ─── DOĞAL YÜZEYLER ──────────────────────────────────────────────────────────
+  dry_soil:
+    swir_epsilon: 0.85
+    mwir_epsilon: 0.92
+    lwir_epsilon: 0.94
+    thermal_mass: 1.2e6
+    solar_absorptivity: 0.80
+    temperature_offset_K: 0.0
+    # Kuru toprak: LWIR'de yüksek emisivite, SWIR'de orta (kuvars bandı etkisi)
+
+  moist_soil:
+    swir_epsilon: 0.90
+    mwir_epsilon: 0.95
+    lwir_epsilon: 0.97
+    thermal_mass: 2.0e6
+    solar_absorptivity: 0.85
+    temperature_offset_K: 0.0
+
+  sand:
+    swir_epsilon: 0.75
+    mwir_epsilon: 0.85
+    lwir_epsilon: 0.90
+    thermal_mass: 0.9e6
+    solar_absorptivity: 0.60
+    temperature_offset_K: 0.0
+    # Kum: düşük ısıl kütle → hızlı ısınır / soğur
+
+  grass_dry:
+    swir_epsilon: 0.80
+    mwir_epsilon: 0.95
+    lwir_epsilon: 0.97
+    thermal_mass: 0.8e6
+    solar_absorptivity: 0.75
+    temperature_offset_K: 0.0
+
+  grass_green:
+    swir_epsilon: 0.82
+    mwir_epsilon: 0.96
+    lwir_epsilon: 0.98
+    thermal_mass: 1.0e6
+    solar_absorptivity: 0.80
+    temperature_offset_K: -2.0    # Fotosentez ile serinleme
+
+  deciduous_forest:
+    swir_epsilon: 0.83
+    mwir_epsilon: 0.97
+    lwir_epsilon: 0.98
+    thermal_mass: 1.1e6
+    solar_absorptivity: 0.82
+    temperature_offset_K: -3.0
+
+  conifer_forest:
+    swir_epsilon: 0.81
+    mwir_epsilon: 0.96
+    lwir_epsilon: 0.97
+    thermal_mass: 1.0e6
+    solar_absorptivity: 0.85
+    temperature_offset_K: -2.0
+
+  rock_granite:
+    swir_epsilon: 0.80
+    mwir_epsilon: 0.88
+    lwir_epsilon: 0.93
+    thermal_mass: 2.5e6
+    solar_absorptivity: 0.65
+    temperature_offset_K: 0.0
+
+  snow_fresh:
+    swir_epsilon: 0.98
+    mwir_epsilon: 0.99
+    lwir_epsilon: 0.99
+    thermal_mass: 0.5e6
+    solar_absorptivity: 0.10    # Çok yüksek albedo
+    temperature_offset_K: -5.0
+
+  water:
+    swir_epsilon: 0.98
+    mwir_epsilon: 0.98
+    lwir_epsilon: 0.99
+    thermal_mass: 4.18e6        # Yüksek ısıl kapasiteli
+    solar_absorptivity: 0.94
+    temperature_offset_K: 0.0
+
+  # ─── YAPAY YÜZEYLER ──────────────────────────────────────────────────────────
+  concrete:
+    swir_epsilon: 0.88
+    mwir_epsilon: 0.90
+    lwir_epsilon: 0.95
+    thermal_mass: 2.0e6
+    solar_absorptivity: 0.70
+    temperature_offset_K: 0.0
+
+  asphalt:
+    swir_epsilon: 0.90
+    mwir_epsilon: 0.92
+    lwir_epsilon: 0.96
+    thermal_mass: 1.8e6
+    solar_absorptivity: 0.92    # Koyu → güçlü ısınma
+    temperature_offset_K: 5.0  # Güneş altı sıcak yüzey
+
+  brick_red:
+    swir_epsilon: 0.86
+    mwir_epsilon: 0.89
+    lwir_epsilon: 0.93
+    thermal_mass: 1.9e6
+    solar_absorptivity: 0.72
+    temperature_offset_K: 0.0
+
+  painted_metal_dark:
+    swir_epsilon: 0.92
+    mwir_epsilon: 0.88
+    lwir_epsilon: 0.90
+    thermal_mass: 3.5e6
+    solar_absorptivity: 0.95
+    temperature_offset_K: 0.0
+
+  painted_metal_white:
+    swir_epsilon: 0.85
+    mwir_epsilon: 0.87
+    lwir_epsilon: 0.91
+    thermal_mass: 3.5e6
+    solar_absorptivity: 0.30
+    temperature_offset_K: 0.0
+
+  aluminum_bare:
+    swir_epsilon: 0.05
+    mwir_epsilon: 0.08
+    lwir_epsilon: 0.05
+    thermal_mass: 2.4e6
+    solar_absorptivity: 0.10    # Yüksek yansıtıcı
+    temperature_offset_K: 0.0
+
+  steel_oxidized:
+    swir_epsilon: 0.70
+    mwir_epsilon: 0.75
+    lwir_epsilon: 0.80
+    thermal_mass: 3.8e6
+    solar_absorptivity: 0.75
+    temperature_offset_K: 0.0
+
+  carbon_fiber:
+    swir_epsilon: 0.85
+    mwir_epsilon: 0.87
+    lwir_epsilon: 0.90
+    thermal_mass: 1.5e6
+    solar_absorptivity: 0.90
+    temperature_offset_K: 0.0
+
+  glass_window:
+    swir_epsilon: 0.15    # SWIR'de şeffaf → düşük emisivite
+    mwir_epsilon: 0.90    # MWIR'de opak
+    lwir_epsilon: 0.92
+    thermal_mass: 2.5e6
+    solar_absorptivity: 0.20
+    temperature_offset_K: 0.0
+
+  rubber_tire:
+    swir_epsilon: 0.93
+    mwir_epsilon: 0.93
+    lwir_epsilon: 0.95
+    thermal_mass: 1.6e6
+    solar_absorptivity: 0.95
+    temperature_offset_K: 0.0
+
+  # ─── UAV / ARAÇ ÖZEL BÖLGELER ────────────────────────────────────────────────
+  engine_exhaust_hot:
+    swir_epsilon: 0.80
+    mwir_epsilon: 0.85
+    lwir_epsilon: 0.88
+    thermal_mass: 0.5e6
+    solar_absorptivity: 0.90
+    temperature_offset_K: 150.0     # Egzoz bölgesi çok sıcak
+
+  engine_housing:
+    swir_epsilon: 0.88
+    mwir_epsilon: 0.90
+    lwir_epsilon: 0.92
+    thermal_mass: 1.8e6
+    solar_absorptivity: 0.85
+    temperature_offset_K: 40.0
+
+  motor_winding_electric:
+    swir_epsilon: 0.85
+    mwir_epsilon: 0.88
+    lwir_epsilon: 0.91
+    thermal_mass: 1.2e6
+    solar_absorptivity: 0.80
+    temperature_offset_K: 25.0      # Elektrik motoru ısısı
+
+  rotor_blade:
+    swir_epsilon: 0.85
+    mwir_epsilon: 0.87
+    lwir_epsilon: 0.89
+    thermal_mass: 1.3e6
+    solar_absorptivity: 0.82
+    temperature_offset_K: 10.0      # Friksiyondan hafif ısınma
+
+  battery_lipo:
+    swir_epsilon: 0.89
+    mwir_epsilon: 0.91
+    lwir_epsilon: 0.93
+    thermal_mass: 2.0e6
+    solar_absorptivity: 0.80
+    temperature_offset_K: 15.0      # Deşarjda ısınma
+
+  airframe_carbon:
+    swir_epsilon: 0.85
+    mwir_epsilon: 0.87
+    lwir_epsilon: 0.90
+    thermal_mass: 1.5e6
+    solar_absorptivity: 0.90
+    temperature_offset_K: 0.0
+
+  # ─── ARKA PLAN / GÖKYÜZÜ ─────────────────────────────────────────────────────
+  sky_clear:
+    swir_epsilon: 0.10
+    mwir_epsilon: 0.30
+    lwir_epsilon: 0.80
+    thermal_mass: 0.0
+    solar_absorptivity: 0.0
+    temperature_offset_K: -30.0     # Gökyüzü soğuk kayıt eder
+
+  sky_overcast:
+    swir_epsilon: 0.20
+    mwir_epsilon: 0.70
+    lwir_epsilon: 0.95
+    thermal_mass: 0.0
+    solar_absorptivity: 0.0
+    temperature_offset_K: -10.0
